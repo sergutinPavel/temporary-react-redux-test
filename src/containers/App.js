@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { BrowserRouter, Route, Link, Redirect, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
+import Header from './Header';
 import Home from "./Home";
 import Login from "./Login";
 // import SignUp from "./SignUp";
@@ -36,17 +37,8 @@ class App extends Component {
     return (
       <BrowserRouter>
 
-        <div>
-          {!!this.props.token &&
-          <header>
-            <nav>
-              <Link to="/" className="navbar-brand">Blog</Link>
-              <ul className="navbar-nav">
-                <li className="nav-item active"><Link to="/protected">Protected Page</Link></li>
-                <li className="nav-item"><Link to="/login">Login</Link></li>
-              </ul>
-            </nav>
-          </header>}
+        <div className="app-layout">
+          {!!this.props.token && <Header/>}
 
           <main className="container">
             <Switch>

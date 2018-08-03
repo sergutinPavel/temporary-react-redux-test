@@ -10,6 +10,7 @@ import App from './containers/App';
 import Saga from './effects';
 import reducer from './reducers';
 
+// styles
 import './styles/index.scss';
 
 // create middlewares

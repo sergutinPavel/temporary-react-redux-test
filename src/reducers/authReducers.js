@@ -13,11 +13,19 @@
 export const AUTH_REQUEST = 'AUTH_REQUEST';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAILURE = 'AUTH_FAILURE';
-
 export const authorize = (login, password) => ({
   type: AUTH_REQUEST,
   payload: { login, password }
 });
+
+export const AUTH_LOGOUT = 'AUTH_LOGOUT';
+export const logout = () => {
+  localStorage.removeItem('token');
+  return {
+    type: AUTH_LOGOUT,
+    payload: {}
+  }
+};
 
 const initialState = {
   token: localStorage.getItem('token'),
@@ -34,6 +42,9 @@ const authReducer = (state = initialState, { type, payload }) => {
     }
     case AUTH_FAILURE: {
       return { ...state, error: payload, loading: false };
+    }
+    case AUTH_LOGOUT: {
+      return { ...initialState }
     }
     default:
       return state;

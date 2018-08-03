@@ -19,7 +19,7 @@ function* authorize({ payload: { login, password } }) {
   try {
     const result = yield call(authMock, login, password);
     yield put({ type: AUTH_SUCCESS, payload: { token: result.data.token } });
-    console.warn('token', result);
+    // console.warn('token', result);
     localStorage.setItem('token', result.data.token);
   } catch (error) {
     let message;
